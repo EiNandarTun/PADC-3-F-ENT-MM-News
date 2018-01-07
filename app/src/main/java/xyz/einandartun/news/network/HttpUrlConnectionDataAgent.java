@@ -3,8 +3,11 @@ package xyz.einandartun.news.network;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xyz.einandartun.news.MMNewsApp;
+import xyz.einandartun.news.events.LoadedNewsEvent;
+import xyz.einandartun.news.network.responses.GetNewsResponse;
 
 /**
  * Created by einandartun on 12/23/17.
@@ -27,7 +32,7 @@ import xyz.einandartun.news.MMNewsApp;
 
 public class HttpUrlConnectionDataAgent implements NewsDataAgent {
 
-    public static HttpUrlConnectionDataAgent sObjInstance;
+    private static HttpUrlConnectionDataAgent sObjInstance;
 
     public HttpUrlConnectionDataAgent() {
     }
@@ -80,7 +85,7 @@ public class HttpUrlConnectionDataAgent implements NewsDataAgent {
                     OutputStream outputStream = connection.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(
                             new OutputStreamWriter(outputStream, "UTF-8"));
-                    //writer.write(getQuery(params));
+                    writer.write(getQuery(params));
                     writer.flush();
                     writer.close();
                     outputStream.close();
@@ -98,6 +103,14 @@ public class HttpUrlConnectionDataAgent implements NewsDataAgent {
 
                     String responseString = stringBuilder.toString(); //9.
                     Log.d(MMNewsApp.LOG_TAG, "response String: " +responseString);
+
+                    Gson gson = new Gson();
+                    GetNewsResponse getNewsResponse = gson.fromJson(responseString, GetNewsResponse.class);
+                    Log.d(MMNewsApp.LOG_TAG, "getNewResponse: ");
+
+                    LoadedNewsEvent event = new LoadedNewsEvent(getNewsResponse.getMmNews());
+                    EventBus.getDefault().post(event);
+
                 } catch (Exception e) {
                     Log.e(MMNewsApp.LOG_TAG, e.getMessage());
                     /*

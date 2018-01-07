@@ -8,17 +8,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import xyz.einandartun.news.MMNewsApp;
 import xyz.einandartun.news.R;
 import xyz.einandartun.news.adapters.NewsAdapter;
 import xyz.einandartun.news.data.models.NewsModel;
 import xyz.einandartun.news.delegates.NewsActionDelegate;
+import xyz.einandartun.news.events.LoadedNewsEvent;
 
 public class MainActivity extends AppCompatActivity implements NewsActionDelegate {
 
@@ -53,6 +60,20 @@ public class MainActivity extends AppCompatActivity implements NewsActionDelegat
         NewsModel.getsObjInstance().loadNews();
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,5 +122,12 @@ public class MainActivity extends AppCompatActivity implements NewsActionDelegat
     @Override
     public void onTapFavoriteButton() {
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onNewsLoaded(LoadedNewsEvent event){
+        Log.d(MMNewsApp.LOG_TAG, "onNewsLoaded: " + event.getNewsList().size());
+
+        mNewsAdapter.setNews(event.getNewsList());
     }
 }
