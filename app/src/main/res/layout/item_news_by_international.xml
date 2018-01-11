@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background_grey">
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="headlines"
+        android:textSize="28sp"
+        android:textColor="@color/header_blue"
+        android:layout_margin="16dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_posted_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1d ago"
+        android:drawableLeft="@drawable/ic_access_time_24dp"
+        android:layout_alignRight="@id/rl_new1"
+        android:drawablePadding="4dp"
+        android:layout_marginTop="28dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_new1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/white_full"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@id/tv_header">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/separator_blue" />
+
+        <TextView
+            android:id="@+id/tv_news_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UK ministers make plea to Germany in pursuit of deal"
+            android:textSize="24sp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            />
+        <TextView
+            android:id="@+id/tv_posted_time1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1d"
+            android:drawableLeft="@drawable/ic_access_time_24dp"
+            android:drawablePadding="4dp"
+            android:layout_below="@id/tv_news_title"
+            android:layout_alignLeft="@id/tv_news_title"
+            android:layout_marginTop="28dp"
+            />
+
+        <ImageView
+            android:id="@+id/iv_news_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_international"
+            android:layout_below="@id/tv_posted_time1"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="8dp"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_new2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_new1"
+            android:orientation="horizontal"
+            android:layout_margin="16dp"
+            android:weightSum="2">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separator_blue" />
+
+                <TextView
+                    android:id="@+id/tv_news1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="US to loseen policy and develop more 'usable' warheads"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    />
+                
+                <TextView
+                    android:id="@+id/tv_posted_time2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1h"
+                    android:drawableLeft="@drawable/ic_access_time_24dp"
+                    android:layout_marginTop="88dp"
+                    android:drawablePadding="4dp"
+                    android:layout_marginLeft="8dp"
+                    />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:src="@drawable/img_international2"
+                    android:layout_marginTop="124dp"
+                    android:scaleType="centerCrop"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separator_blue" />
+                <TextView
+                    android:id="@+id/tv_news2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UK aid groups may lose millions in EU funding"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"/>
+                <TextView
+                    android:id="@+id/tv_postedtime3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50m"
+                    android:drawableLeft="@drawable/ic_access_time_24dp"
+                    android:drawablePadding="4dp"
+                    android:layout_marginTop="88dp"
+                    android:layout_marginLeft="8dp"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:src="@drawable/img_international1"
+                    android:layout_marginTop="124dp"
+                    android:scaleType="centerCrop"/>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_new3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_new2"
+        android:background="@color/white_full"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator_blue" />
+
+        <TextView
+            android:id="@+id/tv_news3_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paradise Papers"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/header_blue"
+            />
+
+        <TextView
+            android:id="@+id/tv_new3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/Head of Angola's wealth fund fired after revelations"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/tv_news3_location"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_new4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_new3"
+        android:background="@color/white_full"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator_blue" />
+
+        <TextView
+            android:id="@+id/tv_news4_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="America"
+            android:textSize="16sp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/header_blue"
+            />
+
+        <TextView
+            android:id="@+id/tv_new4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/Some jewel fund fired after revelations"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/tv_news4_location"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_new5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_new4"
+        android:background="@color/white_full"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator_blue" />
+
+        <TextView
+            android:id="@+id/tv_news5_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="US"
+            android:textSize="16sp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/header_blue"
+            />
+
+        <TextView
+            android:id="@+id/tv_new5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/Trump reversed stance on survellance law in series ofcontradicting tweets"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/tv_news5_location"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More Stories"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_24dp"
+        android:layout_below="@id/rl_new5"
+        android:layout_alignRight="@id/rl_new5"
+        android:textColor="@color/header_blue"
+        android:layout_marginTop="24dp"
+        android:textSize="16sp"
+        />
+
+    <View
+        android:id="@+id/view_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/header_blue"
+        android:layout_marginTop="38dp"
+        android:layout_below="@id/tv_next"/>
+
+</RelativeLayout>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_news_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_news_logo"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top News"
+            android:textColor="@color/black_full"
+            android:layout_toRightOf="@id/iv_news_logo"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            />
+        <ImageView
+            android:id="@+id/iv_news_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_sport3"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/tv_category"/>
+        <TextView
+            android:id="@+id/tv_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Real Madrid don't want to play beautiful football like Barcelona - Xavi "
+            android:textSize="20sp"
+            android:textColor="@color/black_full"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/iv_news_image"/>
+
+
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_one_football"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/image_one_football"-->
+            <!--android:layout_below="@id/tv_news_title"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_alignLeft="@id/tv_news_title"/>-->
+
+
+        <TextView
+            android:id="@+id/tv_one_football"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_news_title"
+            android:text="One football"
+            android:drawableLeft="@drawable/image_one_football"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignLeft="@id/tv_news_title"/>
+
+        <View
+            android:id="@+id/view_separator1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_below="@id/tv_one_football"
+            android:layout_marginTop="16dp"/>
+        <FrameLayout
+            android:id="@+id/fl_news_item1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_separator1">
+        <ImageView
+            android:id="@+id/iv_news_item1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/image_sport1"
+            android:scaleType="centerCrop"
+            android:layout_margin="8dp"
+            />
+        <TextView
+            android:id="@+id/tv_news_item1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_separator1"
+            android:layout_marginLeft="120dp"
+            android:textColor="@color/black_full"
+            android:text="Real Madrid don't want to play beautiful football like Barcelona - Xavi "
+            android:layout_marginTop="8dp"/>
+
+
+            <TextView
+                android:id="@+id/tv_one_football1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_news_title"
+                android:text="One football"
+                android:drawableLeft="@drawable/image_one_football"
+                android:drawablePadding="8dp"
+                android:layout_marginTop="88dp"
+                android:layout_marginLeft="120dp"/>
+
+        </FrameLayout>
+        <View
+            android:id="@+id/view_separator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_below="@id/fl_news_item1"/>
+
+        <FrameLayout
+            android:id="@+id/fl_news_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_separator2"
+        >
+        <ImageView
+            android:id="@+id/iv_news_item2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/image_sport1"
+            android:scaleType="centerCrop"
+            android:layout_margin="8dp"/>
+        <TextView
+            android:id="@+id/tv_news_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Real Madrid don't want to play beautiful football like Barcelona - Xavi "
+            android:textColor="@color/black_full"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_one_football2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_news_title"
+                android:text="One football"
+                android:drawableLeft="@drawable/image_one_football"
+                android:drawablePadding="8dp"
+                android:layout_marginTop="88dp"
+                android:layout_marginLeft="120dp"/>
+
+        </FrameLayout>
+
+        <View
+            android:id="@+id/view_separator3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_below="@id/fl_news_item2"/>
+
+        <FrameLayout
+            android:id="@+id/fl_news_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_separator3"
+            >
+            <ImageView
+                android:id="@+id/iv_news_item3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/image_sport1"
+                android:scaleType="centerCrop"
+                android:layout_margin="8dp"/>
+            <TextView
+                android:id="@+id/tv_news_item3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Real Madrid don't want to play beautiful football like Barcelona - Xavi "
+                android:textColor="@color/black_full"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_one_football3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_news_title"
+                android:text="One football"
+                android:drawableLeft="@drawable/image_one_football"
+                android:drawablePadding="8dp"
+                android:layout_marginTop="88dp"
+                android:layout_marginLeft="120dp"/>
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
