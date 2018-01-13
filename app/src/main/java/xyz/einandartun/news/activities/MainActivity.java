@@ -24,6 +24,7 @@ import xyz.einandartun.news.MMNewsApp;
 import xyz.einandartun.news.R;
 import xyz.einandartun.news.adapters.NewsAdapter;
 import xyz.einandartun.news.data.models.NewsModel;
+import xyz.einandartun.news.data.vo.NewsVO;
 import xyz.einandartun.news.delegates.NewsActionDelegate;
 import xyz.einandartun.news.events.LoadedNewsEvent;
 
@@ -104,8 +105,9 @@ public class MainActivity extends AppCompatActivity implements NewsActionDelegat
     }
 
     @Override
-    public void onTapNewsItems() {
+    public void onTapNewsItems(NewsVO news) {
         Intent intent = new Intent(getApplicationContext(), NewsDetailsActivity.class);
+        intent.putExtra("news_id", news.getNewsId());
         startActivity(intent);
     }
 

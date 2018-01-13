@@ -23,6 +23,7 @@ import xyz.einandartun.news.MMNewsApp;
 import xyz.einandartun.news.R;
 import xyz.einandartun.news.adapters.NewsAdapter;
 import xyz.einandartun.news.data.models.NewsModel;
+import xyz.einandartun.news.data.vo.NewsVO;
 import xyz.einandartun.news.delegates.NewsActionDelegate;
 import xyz.einandartun.news.events.LoadedNewsEvent;
 
@@ -65,7 +66,7 @@ public class NewsByCategoryFragment extends Fragment implements NewsActionDelega
     }
 
     @Override
-    public void onTapNewsItems() {
+    public void onTapNewsItems(NewsVO tappedNews) {
 
     }
 

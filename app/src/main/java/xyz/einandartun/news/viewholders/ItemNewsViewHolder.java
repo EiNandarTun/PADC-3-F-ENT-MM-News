@@ -39,6 +39,7 @@ public class ItemNewsViewHolder extends RecyclerView.ViewHolder {
     ImageView ivNews;
 
 
+    private NewsVO mNews;
 
     public ItemNewsViewHolder(View itemView, NewsActionDelegate newsActionDelegate) {
 
@@ -51,10 +52,12 @@ public class ItemNewsViewHolder extends RecyclerView.ViewHolder {
     @OnClick(R.id.cv_news_item_root)
     public  void onNewsItemTap(View view){
         //Toast.makeText(view.getContext(), "Newa Item Click", Toast.LENGTH_LONG).show();
-        mNewsActionDelegate.onTapNewsItems();
+        mNewsActionDelegate.onTapNewsItems(mNews);
     }
 
     public void setNews(NewsVO news){
+        mNews = news;
+
         tvPublicationTitle.setText(news.getPublication().getTitle());
         tvPostedDate.setText(news.getPostedDate());
         tvNewsBrief.setText(news.getBrief());
