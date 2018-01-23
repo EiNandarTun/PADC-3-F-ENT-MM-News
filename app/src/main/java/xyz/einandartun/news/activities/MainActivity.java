@@ -2,8 +2,12 @@ package xyz.einandartun.news.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,12 +27,17 @@ import butterknife.OnClick;
 import xyz.einandartun.news.MMNewsApp;
 import xyz.einandartun.news.R;
 import xyz.einandartun.news.adapters.NewsAdapter;
+import xyz.einandartun.news.data.models.LoginUserModel;
 import xyz.einandartun.news.data.models.NewsModel;
 import xyz.einandartun.news.data.vo.NewsVO;
+import xyz.einandartun.news.delegates.BeforeLoginDelegate;
+import xyz.einandartun.news.delegates.LoginUserDelegate;
 import xyz.einandartun.news.delegates.NewsActionDelegate;
 import xyz.einandartun.news.events.LoadedNewsEvent;
+import xyz.einandartun.news.viewpods.AccountControlViewPod;
+import xyz.einandartun.news.viewpods.BeforeLoginUserViewPod;
 
-public class MainActivity extends AppCompatActivity implements NewsActionDelegate {
+public class MainActivity extends AppCompatActivity implements NewsActionDelegate,BeforeLoginDelegate,LoginUserDelegate {
 
     @BindView(R.id.rv_news)
     RecyclerView rvNews;
@@ -39,7 +48,15 @@ public class MainActivity extends AppCompatActivity implements NewsActionDelegat
     @BindView(R.id.fab)
     FloatingActionButton fab;
 
+    @BindView(R.id.navigation_view)
+    NavigationView navigationView;
+
+    @BindView(R.id.darwer_layout)
+    DrawerLayout drawerLayout;
+
     private NewsAdapter mNewsAdapter;
+    private BeforeLoginUserViewPod vpBeforeLoginUserViewPod;
+    private AccountControlViewPod vpAccountControlViewPod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +74,34 @@ public class MainActivity extends AppCompatActivity implements NewsActionDelegat
         rvNews.setLayoutManager(linearLayoutManager);
 
         rvNews.setAdapter(mNewsAdapter);
+
+        //attach navigation view
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.menu_news_by_category) {
+                    //item.setChecked(true);
+                    Intent intent = NewsByCategoryActivity.newIntent(getApplicationContext());
+                    startActivity(intent);
+
+                    //close drawer
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+                return false;
+            }
+        });
+
+        if (getSupportActionBar()!= null){
+            getSupportActionBar().setTitle(R.string.all_news);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_24dp);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        //vpBeforeLoginUserViewPod = (BeforeLoginUserViewPod) navigationView.getHeaderView(0);
+       // vpBeforeLoginUserViewPod.setmDelegate(this);
+        vpAccountControlViewPod = (AccountControlViewPod) navigationView.getHeaderView(0);
+        vpAccountControlViewPod.setDelegate((BeforeLoginDelegate)this);
+        vpAccountControlViewPod.setDelegate((LoginUserDelegate)this);
 
         NewsModel.getsObjInstance().loadNews();
 
@@ -93,7 +138,10 @@ public class MainActivity extends AppCompatActivity implements NewsActionDelegat
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id == android.R.id.home){
+            drawerLayout.openDrawer(GravityCompat.START);
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -131,5 +179,22 @@ public class MainActivity extends AppCompatActivity implements NewsActionDelegat
         Log.d(MMNewsApp.LOG_TAG, "onNewsLoaded: " + event.getNewsList().size());
 
         mNewsAdapter.setNews(event.getNewsList());
+    }
+
+    @Override
+    public void onTapToLogin() {
+        Intent intent = AccountControlActivity.newIntentLogin(getApplicationContext());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onTapToRegister() {
+        Intent intent = AccountControlActivity.newIntentRegister(getApplicationContext());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onTapLogout() {
+        LoginUserModel.getsObjInstance().logout();
     }
 }

@@ -43,6 +43,12 @@ public class OkHttpDataAgent implements NewsDataAgent {
         new LoadNewsTask().execute("http://padcmyanmar.com/padc-3/mm-news/apis/v1/getMMNews.php");
     }
 
+    @Override
+    public void logInUser(String phoneNo, String password) {
+
+    }
+
+
     private static class LoadNewsTask extends AsyncTask<String, Void, String>{
 
         @Override

@@ -9,4 +9,9 @@ public interface NewsDataAgent {
      * load news from network api.
      */
     void  loadNews();
+
+    /**
+     * login
+     */
+    void logInUser(String phoneNo, String password);
 }
